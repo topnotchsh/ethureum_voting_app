@@ -1,0 +1,13 @@
+import { asciiToHex } from 'web3-utils';
+deployedContract.deploy({
+	data: bytecode,
+	arguments: [['Rama', 'Nick', 'Jose'].map(name => web3.utils.asciiToHex(name))]
+}).send({
+	from: '0xb9D1dFeE4caD6cdBc3F4A7065F505aF64F335829',
+	gas: 1500000,
+	gasPrice: web3.utils.toWei('0.0003', 'ether')
+}).then((newContractInstance)=>{
+	deployedContract.options.address = newContractInstance.options.address;
+})
+
+web3.utils.asciiToHex('Rama')
